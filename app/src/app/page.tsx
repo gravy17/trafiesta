@@ -9,10 +9,10 @@ import { ActivitiesSection } from "./components/ActivitiesSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen w-full bg-background items-center">
+    <div className="flex flex-col min-h-screen w-full bg-gray-100 items-center">
       <NavBar />
-      <main className="flex flex-1 w-full max-w-[1376px] px-2 sm:px-6 gap-6 mt-2">
-        <div className="hidden md:block w-[16%] min-w-48 max-w-xs flex-shrink-0">
+      <main className="flex flex-1 w-full max-w-[1920px] px-2 sm:px-6 gap-6 mt-2">
+        <div className="hidden md:block w-[300px] max-h-[800px] min-w-48 max-w-xs flex-shrink-0">
           <Sidebar />
         </div>
         <div className="flex-1 flex flex-col items-center max-w-full">
