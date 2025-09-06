@@ -6,6 +6,7 @@ import { HeroSection } from "./components/HeroSection";
 import { FlightsSection } from "./components/FlightsSection";
 import { HotelsSection } from "./components/HotelsSection";
 import { ActivitiesSection } from "./components/ActivitiesSection";
+import { TripSummary } from "./components/TripSummary";
 
 export default function Home() {
   return (
@@ -15,8 +16,9 @@ export default function Home() {
         <div className="hidden md:block w-[300px] max-h-[800px] min-w-48 max-w-xs flex-shrink-0">
           <Sidebar />
         </div>
-        <div className="flex-1 flex flex-col items-center max-w-full">
+        <div className="flex-1 flex flex-col justify-between max-w-full">
           <HeroSection />
+          <TripSummary />
           <div className="w-full flex flex-col gap-8">
             <FlightsSection />
             <HotelsSection />

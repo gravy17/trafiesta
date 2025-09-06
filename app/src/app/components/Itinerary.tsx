@@ -22,7 +22,7 @@ export function Itinerary({
 }: ItineraryProps) {
   return (
     <section
-      className={`w-full max-w-[1156px] mx-auto mb-8 rounded-sm overflow-hidden bg-${backgroundColor}`}
+      className={`w-full max-w-[1156px] mx-auto mb-8 rounded-xs overflow-hidden bg-${backgroundColor}`}
     >
       <div
         className="flex items-center gap-3 px-6 py-4"
