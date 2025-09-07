@@ -3,24 +3,16 @@
 import Image from "next/image";
 import React from "react";
 import { useTravel } from "../context/TravelContext";
+import { Itinerary } from "./Itinerary";
+import { NoItinerary } from "./NoItinerary";
 
 export function FlightsSection() {
   const { flights } = useTravel();
 
   return (
-    <section className="w-full max-w-[1156px] mx-auto mb-8">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-extrabold">Flights</h2>
-        <a className="text-sm text-blue-600">See all flights</a>
-      </div>
-
+    <Itinerary title="Flights" iconPath="/AirplaneInFlight.svg" buttonTextColor="blue" buttonBgColor="white" backgroundColor="lightgray" primaryColor="dark">
       {flights.length === 0 ? (
-        <div className="w-full h-44 rounded-lg border-2 border-dashed border-gray-200 flex items-center justify-center text-gray-400">
-          <div className="text-center">
-            <div className="text-lg font-medium">No flights yet</div>
-            <div className="text-sm">Add flights to see them here</div>
-          </div>
-        </div>
+        <NoItinerary type="flight"  />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {flights.map((f) => (
@@ -39,6 +31,6 @@ export function FlightsSection() {
           ))}
         </div>
       )}
-    </section>
+    </Itinerary>
   );
 }

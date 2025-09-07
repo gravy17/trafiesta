@@ -5,6 +5,7 @@ import React from "react";
 
 import { Itinerary } from "./Itinerary";
 import { useTravel } from "../context/TravelContext";
+import { NoItinerary } from "./NoItinerary";
 
 export function ActivitiesSection() {
   const { activities } = useTravel();
@@ -31,21 +32,10 @@ export function ActivitiesSection() {
   };
 
   return (
-      <Itinerary
-        title="Activities"
-        iconPath="/RoadHorizon.svg"
-        backgroundColor="blue-700"
-        primaryColor="blue-50"
-        buttonTextColor="blue-700"
-      >
+      <Itinerary title="Activities" iconPath="/RoadHorizon.svg" buttonTextColor="blue" buttonBgColor="white" backgroundColor="blue" primaryColor="white">
         <div className="h-full">
           {activities.length === 0 ? (
-            <div className="w-full h-full rounded-md border-2 border-dashed border-gray-200 flex items-center justify-center text-gray-400">
-              <div className="text-center">
-                <div className="text-lg font-medium">No activities yet</div>
-                <div className="text-sm">Add activities</div>
-              </div>
-            </div>
+            <NoItinerary type="activity"/>
           ) : (
             <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
               {activities.map((a) => (

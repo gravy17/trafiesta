@@ -3,24 +3,16 @@
 import Image from "next/image";
 import React from "react";
 import { useTravel } from "../context/TravelContext";
+import { Itinerary } from "./Itinerary";
+import { NoItinerary } from "./NoItinerary";
 
 export function HotelsSection() {
   const { hotels } = useTravel();
 
   return (
-    <section className="w-full max-w-[1156px] mx-auto mb-8">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-extrabold">Hotels</h2>
-        <a className="text-sm text-blue-600">View all hotels</a>
-      </div>
-
+    <Itinerary title="Hotels" iconPath="/Warehouse.svg" buttonTextColor="dark" buttonBgColor="white" backgroundColor="slate" primaryColor="white">
       {hotels.length === 0 ? (
-        <div className="w-full h-44 rounded-lg border-2 border-dashed border-gray-200 flex items-center justify-center text-gray-400">
-          <div className="text-center">
-            <div className="text-lg font-medium">No hotels yet</div>
-            <div className="text-sm">Add hotels to see them here</div>
-          </div>
-        </div>
+        <NoItinerary type="hotel" />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {hotels.map((h) => (
@@ -36,6 +28,6 @@ export function HotelsSection() {
           ))}
         </div>
       )}
-    </section>
+    </Itinerary>
   );
 }
