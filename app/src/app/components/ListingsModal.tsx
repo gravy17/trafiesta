@@ -16,21 +16,17 @@ export default function ListingsModal({
 }: ListingsModalProps) {
     const [listings, setListings] = useState<any[]>([]);
     const { dispatch } = useTravel();
-
-    if (!location || (!location.id && !location.dest_id)){
-        return null;
-    }
     
     let searchParams = "";
     switch (searchType) {
         case "hotels":
-            searchParams = `dest_id=${location.dest_id}`;
+            searchParams = `dest_id=${location?.dest_id}`;
         break;
         case "flights":
-            searchParams = `toId=${location.id}`;
+            searchParams = `toId=${location?.id}`;
         break;
         case "attraction":
-            searchParams = `id=${location.id}`;
+            searchParams = `id=${location?.id}`;
         break;
     }
 
@@ -55,7 +51,7 @@ export default function ListingsModal({
     if (isOpen && location) {
       fetch(`/api/search/${searchType}/listings?${searchParams}`)
         .then((res) => res.json())
-        .then((data) => setListings(data.listings || []));
+        .then((data) => setListings(data || []));
     }
   }, [isOpen, location, searchType]);
 
@@ -80,7 +76,7 @@ export default function ListingsModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
       <div ref={modalRef} className="bg-white p-6 rounded-xl w-full max-w-lg">
         <h2 className="text-lg font-bold mb-4">
-          {searchType}: {location.title || location.label}
+          {searchType}: {location.title || location.label || location.name}
         </h2>
         <ul className="max-h-64 overflow-y-auto">
           {listings.map((item, i) => (
@@ -89,7 +85,19 @@ export default function ListingsModal({
               className="p-2 hover:bg-gray-100 cursor-pointer"
               onClick={() => addToStore(item)}
             >
-              {item.name || item.title}
+                {searchType === "flights" ? (
+                    <>
+                        {item.segments[0].legs[0].carriersData[0].name} {item.segments[0].legs[0].flightInfo.flightNumber} - {item.segments[0].legs[0].departureAirport.code} to {item.segments[0].legs[0].arrivalAirport.code} ({item.segments[0].legs[0].departureTime} - {item.segments[0].legs[0].arrivalTime}) - {item.priceBreakdown.total.units} {item.priceBreakdown.total.currencyCode}
+                    </>
+                ) : searchType === "hotels" ? (
+                    <>
+                        {item.name} - {item.address} - {item.price} {item.currency}
+                    </>
+                ) : searchType === "attraction" ? (
+                    <>
+                        {item.title} - {item.address} - {item.price ? `${item.price} ${item.currency}` : 'Free'}
+                    </>
+                ) : null}
             </li>
           ))}
         </ul>

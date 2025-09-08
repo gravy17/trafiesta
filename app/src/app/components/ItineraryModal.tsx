@@ -57,7 +57,7 @@ export default function ItineraryModal({
                 onClose();
               }}
             >
-              {item.title ?? item.label}
+              {item.title ?? item.label ?? item.name }
             </li>
           ))}
         </ul>
