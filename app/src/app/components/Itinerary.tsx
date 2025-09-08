@@ -42,7 +42,7 @@ export function Itinerary({
 }: ItineraryProps) {
   return (
     <section
-      className={`w-full max-w-[1156px] mx-auto rounded-xs overflow-hidden ${bgClasses[backgroundColor]}`}
+      className={`w-full mx-auto rounded-xs overflow-hidden ${bgClasses[backgroundColor]}`}
     >
       <div
         className="flex items-center gap-3 px-6 py-4"

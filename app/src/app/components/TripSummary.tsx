@@ -3,7 +3,7 @@ import React from "react";
 
 export function TripSummary() {
   return (
-    <section className="w-fit max-w-[1412px] h-fit mr-auto mb-2 pt-4">
+    <section className="w-fit max-w-[1412px] h-fit mr-auto mb-2 relative">
       <div className="w-fit p-0.5 rounded-xs flex justify-between gap-2 text-orange-900 bg-orange-50">
         <Image src="/CalendarBlank.svg" alt="Calendar" width={16} height={16}/>
         <span>21 March 2024</span>

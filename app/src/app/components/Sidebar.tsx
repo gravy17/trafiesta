@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useLang } from "../context/LangContext";
 
 export function Sidebar() {
+  const {lang, setLang} = useLang();
+
   return (
     <aside className="w-[220px] h-full mt-4 bg-white border-r border-gray-100 md:text-base">
       <nav className="py-6 px-4 flex flex-col gap-1">
@@ -53,6 +58,16 @@ export function Sidebar() {
             <Image src="/CaretUpDown.svg" alt="" width={24} height={24} />
           </div>
         </div>
+        <select
+          value={lang}
+          onChange={(e) => setLang(e.target.value)}
+          className="rounded bg-gray-100 px-2 py-1 text-dark"
+        >
+          <option value="en-us">en</option>
+          <option value="fr-fr">fr</option>
+          <option value="es-es">es</option>
+          <option value="de-de">de</option>
+        </select>
       </nav>
     </aside>
   );

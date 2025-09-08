@@ -1,94 +1,48 @@
 "use client";
+import { createContext, useContext, useReducer, ReactNode } from "react";
 
-import React, { createContext, useContext, useState } from "react";
-
-export type Flight = {
-  id: string;
-  route: string;
-  time?: string;
-  price?: string;
-  carrier?: string;
+type TravelState = {
+  hotels: any[];
+  flights: any[];
+  activities: any[];
 };
 
-export type Hotel = {
-  id: string;
-  name: string;
-  price?: string;
-  img?: string;
+type TravelAction =
+  | { type: "ADD_HOTEL"; payload: any }
+  | { type: "ADD_FLIGHT"; payload: any }
+  | { type: "ADD_ACTIVITY"; payload: any };
+
+const initialState: TravelState = {
+  hotels: [],
+  flights: [],
+  activities: [],
 };
 
-export type Activity = {
-  id: string;
-  label: string;
-  icon?: string;
-};
-
-type TravelContextType = {
-  flights: Flight[];
-  hotels: Hotel[];
-  activities: Activity[];
-  addFlight: (f: Omit<Flight, "id">) => void;
-  removeFlight: (id: string) => void;
-  addHotel: (h: Omit<Hotel, "id">) => void;
-  removeHotel: (id: string) => void;
-  addActivity: (a: Omit<Activity, "id">) => void;
-  removeActivity: (id: string) => void;
-};
-
-const TravelContext = createContext<TravelContextType | undefined>(undefined);
-
-export function TravelProvider({ children }: { children: React.ReactNode }) {
-  const [flights, setFlights] = useState<Flight[]>([]);
-  const [hotels, setHotels] = useState<Hotel[]>([]);
-  const [activities, setActivities] = useState<Activity[]>([]);
-
-  function addFlight(f: Omit<Flight, "id">) {
-    setFlights((s) => [...s, { ...f, id: Date.now().toString() }]);
+function reducer(state: TravelState, action: TravelAction): TravelState {
+  switch (action.type) {
+    case "ADD_HOTEL":
+      return { ...state, hotels: [...state.hotels, action.payload] };
+    case "ADD_FLIGHT":
+      return { ...state, flights: [...state.flights, action.payload] };
+    case "ADD_ACTIVITY":
+      return { ...state, activities: [...state.activities, action.payload] };
+    default:
+      return state;
   }
+}
 
-  function removeFlight(id: string) {
-    setFlights((s) => s.filter((x) => x.id !== id));
-  }
+const TravelContext = createContext<{
+  state: TravelState;
+  dispatch: React.Dispatch<TravelAction>;
+}>({ state: initialState, dispatch: () => {} });
 
-  function addHotel(h: Omit<Hotel, "id">) {
-    setHotels((s) => [...s, { ...h, id: Date.now().toString() }]);
-  }
-
-  function removeHotel(id: string) {
-    setHotels((s) => s.filter((x) => x.id !== id));
-  }
-
-  function addActivity(a: Omit<Activity, "id">) {
-    setActivities((s) => [...s, { ...a, id: Date.now().toString() }]);
-  }
-
-  function removeActivity(id: string) {
-    setActivities((s) => s.filter((x) => x.id !== id));
-  }
-
+export const TravelProvider = ({ children }: { children: ReactNode }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <TravelContext.Provider
-      value={{
-        flights,
-        hotels,
-        activities,
-        addFlight,
-        removeFlight,
-        addHotel,
-        removeHotel,
-        addActivity,
-        removeActivity,
-      }}
-    >
+    <TravelContext.Provider value={{ state, dispatch }}>
       {children}
     </TravelContext.Provider>
   );
-}
+};
 
-export function useTravel() {
-  const ctx = useContext(TravelContext);
-  if (!ctx) throw new Error("useTravel must be used within TravelProvider");
-  return ctx;
-}
-
-export default TravelContext;
+export const useTravel = () => useContext(TravelContext);

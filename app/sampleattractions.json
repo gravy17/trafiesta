@@ -1,0 +1,166 @@
+{
+    "status": true,
+    "message": "Success",
+    "timestamp": 1757298195064,
+    "data": {
+        "products": [
+            {
+                "id": "eyJwaW5uZWRQcm9kdWN0IjoiUFJhNk5YaU9SSUZ4IiwidWZpIjotMTEwMDE3fQ==",
+                "__typename": "AttractionsSearchProductSuggestion",
+                "title": "Full Day Pass to Cala Manbrù Beach Club",
+                "productId": "PRa6NXiORIFx",
+                "productSlug": "pra6nxiorifx-full-day-pass-to-cala-manbru-beach-club",
+                "taxonomySlug": "activities",
+                "cityUfi": -110017,
+                "cityName": "Agrigento",
+                "countryCode": "it"
+            },
+            {
+                "id": "eyJwaW5uZWRQcm9kdWN0IjoiUFJSeU5pdlFKdzVTIiwidWZpIjotMjYwMjUxMn0=",
+                "__typename": "AttractionsSearchProductSuggestion",
+                "title": "Private Transfer from Manchester City to Manchester Airport (MAN)",
+                "productId": "PRRyNivQJw5S",
+                "productSlug": "prrynivqjw5s-private-transfer-from-manchester-city-to-manchester-airport-man",
+                "taxonomySlug": "transfers-services",
+                "cityUfi": -2602512,
+                "cityName": "Manchester",
+                "countryCode": "gb"
+            },
+            {
+                "id": "eyJwaW5uZWRQcm9kdWN0IjoiUFI4eXRiZnhmdG1JIiwidWZpIjotMjYwMjUxMn0=",
+                "__typename": "AttractionsSearchProductSuggestion",
+                "title": "Manchester to Manchester Airport (MAN) - Departure Private Transfer",
+                "productId": "PR8ytbfxftmI",
+                "productSlug": "pr8ytbfxftmi-manchester-to-manchester-airport-man-departure-private-transfer",
+                "taxonomySlug": "transfers-services",
+                "cityUfi": -2602512,
+                "cityName": "Manchester",
+                "countryCode": "gb"
+            },
+            {
+                "id": "eyJwaW5uZWRQcm9kdWN0IjoiUFJqRG1KZm05T2FDIiwidWZpIjotMjYwMjUxMn0=",
+                "__typename": "AttractionsSearchProductSuggestion",
+                "title": "Manchester Airport (MAN) to Manchester - Arrival Private Transfer",
+                "productId": "PRjDmJfm9OaC",
+                "productSlug": "prjdmjfm9oac-manchester-airport-man-to-manchester-arrival-private-transfer",
+                "taxonomySlug": "transfers-services",
+                "cityUfi": -2602512,
+                "cityName": "Manchester",
+                "countryCode": "gb"
+            },
+            {
+                "id": "eyJwaW5uZWRQcm9kdWN0IjoiUFJmMHpwQW5mdENnIiwidWZpIjotMjYwMjUxMn0=",
+                "__typename": "AttractionsSearchProductSuggestion",
+                "title": "Private Transfer from Manchester Airport (MAN) to Manchester City",
+                "productId": "PRf0zpAnftCg",
+                "productSlug": "prf0zpanftcg-private-transfer-from-manchester-airport-man-to-manchester-city",
+                "taxonomySlug": "transfers-services",
+                "cityUfi": -2602512,
+                "cityName": "Manchester",
+                "countryCode": "gb"
+            },
+            {
+                "id": "eyJwaW5uZWRQcm9kdWN0IjoiUFJuWWdRdkRiaFFqIiwidWZpIjotMjYwMjUxMn0=",
+                "__typename": "AttractionsSearchProductSuggestion",
+                "title": "Manchester Airport (MAN) to Manchester - Round-Trip Private Transfer",
+                "productId": "PRnYgQvDbhQj",
+                "productSlug": "prnygqvdbhqj-manchester-airport-man-to-manchester-round-trip-private-transfer",
+                "taxonomySlug": "transfers-services",
+                "cityUfi": -2602512,
+                "cityName": "Manchester",
+                "countryCode": "gb"
+            },
+            {
+                "id": "eyJwaW5uZWRQcm9kdWN0IjoiUFJCSFhtRFlpNndSIiwidWZpIjotMjYwMjUxMn0=",
+                "__typename": "AttractionsSearchProductSuggestion",
+                "title": "Departure Private Transfer: Manchester to Manchester Airport MAN in Luxury Van",
+                "productId": "PRBHXmDYi6wR",
+                "productSlug": "prbhxmdyi6wr-departure-private-transfer-manchester-to-manchester-airport-man-in-",
+                "taxonomySlug": "transfers-services",
+                "cityUfi": -2602512,
+                "cityName": "Manchester",
+                "countryCode": "gb"
+            },
+            {
+                "id": "eyJwaW5uZWRQcm9kdWN0IjoiUFJlaW52dFkyY3JvIiwidWZpIjotMjYwMjUxMn0=",
+                "__typename": "AttractionsSearchProductSuggestion",
+                "title": "Manchester Airport MAN Private Transfer to Manchester City/Hotels",
+                "productId": "PReinvtY2cro",
+                "productSlug": "preinvty2cro-one-way-liverpool-john-lennon-airport-lpl-tofrom-liverpool",
+                "taxonomySlug": "transfers-services",
+                "cityUfi": -2602512,
+                "cityName": "Manchester",
+                "countryCode": "gb"
+            },
+            {
+                "id": "eyJwaW5uZWRQcm9kdWN0IjoiUFJGek5keTBLOGREIiwidWZpIjotMTEwMDE3fQ==",
+                "__typename": "AttractionsSearchProductSuggestion",
+                "title": "WWF Kayak Tour from Cala Manbrù to Torre Salsa Reserve",
+                "productId": "PRFzNdy0K8dD",
+                "productSlug": "prfzndy0k8dd-wwf-kayak-tour-from-cala-manbru-to-torre-salsa-reserve",
+                "taxonomySlug": "tours",
+                "cityUfi": -110017,
+                "cityName": "Agrigento",
+                "countryCode": "it"
+            },
+            {
+                "id": "eyJwaW5uZWRQcm9kdWN0IjoiUFJpYXJ5aFJIMzNnIiwidWZpIjotMTEwMDE3fQ==",
+                "__typename": "AttractionsSearchProductSuggestion",
+                "title": "WWF SUP TOUR: From Cala Manbrù to Torre Salsa Reserve",
+                "productId": "PRiaryhRH33g",
+                "productSlug": "priaryhrh33g-wwf-sup-tour-from-cala-manbru-to-torre-salsa-reserve",
+                "taxonomySlug": "activities",
+                "cityUfi": -110017,
+                "cityName": "Agrigento",
+                "countryCode": "it"
+            }
+        ],
+        "destinations": [
+            {
+                "id": "eyJ1ZmkiOjIwMDc5OTQyfQ==",
+                "__typename": "AttractionsSearchDestinationSuggestion",
+                "ufi": 20079942,
+                "country": "United States",
+                "cityName": "Manchester",
+                "productCount": 12,
+                "cc1": "us"
+            },
+            {
+                "id": "eyJ1ZmkiOi0yNjAyNTEyfQ==",
+                "__typename": "AttractionsSearchDestinationSuggestion",
+                "ufi": -2602512,
+                "country": "United Kingdom",
+                "cityName": "Manchester",
+                "productCount": 321,
+                "cc1": "gb"
+            },
+            {
+                "id": "eyJ1ZmkiOi0yNDM3ODk0fQ==",
+                "__typename": "AttractionsSearchDestinationSuggestion",
+                "ufi": -2437894,
+                "country": "Philippines",
+                "cityName": "Manila",
+                "productCount": 132,
+                "cc1": "ph"
+            },
+            {
+                "id": "eyJ1ZmkiOi03ODQ4MzN9",
+                "__typename": "AttractionsSearchDestinationSuggestion",
+                "ufi": -784833,
+                "country": "Bahrain",
+                "cityName": "Manama",
+                "productCount": 50,
+                "cc1": "bh"
+            },
+            {
+                "id": "eyJ1ZmkiOjkwMDAzOTI4Nn0=",
+                "__typename": "AttractionsSearchDestinationSuggestion",
+                "ufi": 900039286,
+                "country": "Spain",
+                "cityName": "La Manga del Mar Menor",
+                "productCount": 67,
+                "cc1": "es"
+            }
+        ]
+    }
+}

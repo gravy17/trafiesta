@@ -7,15 +7,15 @@ import { Itinerary } from "./Itinerary";
 import { NoItinerary } from "./NoItinerary";
 
 export function FlightsSection() {
-  const { flights } = useTravel();
+  const { state } = useTravel();
 
   return (
     <Itinerary title="Flights" iconPath="/AirplaneInFlight.svg" buttonTextColor="blue" buttonBgColor="white" backgroundColor="lightgray" primaryColor="dark">
-      {flights.length === 0 ? (
+      {state.flights.length === 0 ? (
         <NoItinerary type="flight"  />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {flights.map((f) => (
+          {state.flights.map((f) => (
             <div key={f.id} className="flex items-center gap-3 p-3 bg-white border border-gray-100 rounded-lg shadow-sm">
               <div className="flex-1 min-w-0">
                 <div className="text-sm text-gray-600 truncate">{f.route}</div>

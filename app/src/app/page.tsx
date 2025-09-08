@@ -10,6 +10,7 @@ import { TripSummary } from "./components/TripSummary";
 import { AddToItinerary } from "./components/AddToItinerary";
 
 export default function Home() {
+
   return (
     <div className="flex flex-col min-h-screen w-full bg-gray-100 items-center">
       <NavBar />

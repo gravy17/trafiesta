@@ -1,5 +1,7 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import ItineraryModal from "./ItineraryModal";
+import ListingsModal from "./ListingsModal";
 
 type AllowedTypes = 'flight' | 'hotel' | 'activity' 
 
@@ -11,6 +13,13 @@ export function NoItinerary({
   type
 }: NoItineraryProps
 ) {
+  const [firstOpen, setFirstOpen] = useState(false);
+  const [secondOpen, setSecondOpen] = useState(false);
+  const [selectedType, setSelectedType] = useState<
+    "hotels" | "flights" | "attraction" | null
+  >(null);
+  const [selectedLocation, setSelectedLocation] = useState<any>(null);
+
   return (
     <section className={`w-full h-fit rounded-xs p-4 text-sm bg-white flex flex-col align-middle justify-items-center-safe`}>
       <div className="w-fit m-auto">
@@ -66,9 +75,41 @@ export function NoItinerary({
  : null}
         <p className={`text-sm text-dark align-middle`}>No Request Yet</p>
       </div>
-      <button className={`w-full max-w-44 max-h-12 p-2 rounded-sm font-medium mt-4 text-white bg-blue-700 mx-auto`}>
+      <button onClick={() => {
+          switch (type){
+            case "hotel":
+              setSelectedType("hotels")
+              break;
+            case "flight":
+              setSelectedType("flights")
+              break;
+            case "activity":
+              setSelectedType("attraction")
+              break;
+            default:
+              setSelectedType(null)
+          }
+          setFirstOpen(true);
+        }} className={`w-full max-w-44 max-h-12 p-2 rounded-sm font-medium mt-4 text-white bg-blue-700 mx-auto`}>
         Add {type}
       </button>
+
+      <ItineraryModal
+        isOpen={firstOpen}
+        onClose={() => setFirstOpen(false)}
+        searchType={selectedType!}
+        onSelectLocation={(loc) => {
+          setSelectedLocation(loc);
+          setSecondOpen(true);
+        }}
+      />
+
+      <ListingsModal
+        isOpen={secondOpen}
+        onClose={() => setSecondOpen(false)}
+        searchType={selectedType!}
+        location={selectedLocation}
+      />
     </section>
   );
 }

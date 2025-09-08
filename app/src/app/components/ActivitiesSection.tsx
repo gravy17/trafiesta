@@ -8,7 +8,7 @@ import { useTravel } from "../context/TravelContext";
 import { NoItinerary } from "./NoItinerary";
 
 export function ActivitiesSection() {
-  const { activities } = useTravel();
+  const { state } = useTravel();
 
   // Figma CSS translated into inline styles for exact placement.
   const blueBoxStyle: React.CSSProperties = {
@@ -34,11 +34,11 @@ export function ActivitiesSection() {
   return (
       <Itinerary title="Activities" iconPath="/RoadHorizon.svg" buttonTextColor="blue" buttonBgColor="white" backgroundColor="blue" primaryColor="white">
         <div className="h-full">
-          {activities.length === 0 ? (
+          {state.activities.length === 0 ? (
             <NoItinerary type="activity"/>
           ) : (
             <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
-              {activities.map((a) => (
+              {state.activities.map((a) => (
                 <div key={a.id} className="flex flex-col items-center gap-2 bg-white p-3 rounded-lg border border-gray-100">
                   <div className="w-10 h-10 flex items-center justify-center bg-[#F5F7FA] rounded-md">
                     {a.icon ? <Image src={a.icon} alt={a.label} width={20} height={20} /> : null}
