@@ -58,23 +58,6 @@ export function AddToItinerary({
       >
         Add {title}
       </button>
-
-      <ItineraryModal
-        isOpen={firstOpen}
-        onClose={() => setFirstOpen(false)}
-        searchType={selectedType!}
-        onSelectLocation={(loc) => {
-          setSelectedLocation(loc);
-          setSecondOpen(true);
-        }}
-      />
-
-      <ListingsModal
-        isOpen={secondOpen}
-        onClose={() => setSecondOpen(false)}
-        searchType={selectedType!}
-        location={selectedLocation}
-      />
     </section>
   );
 }
