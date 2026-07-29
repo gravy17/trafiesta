@@ -9,6 +9,7 @@ import { AddToItinerary } from "./components/AddToItinerary";
 import { SearchResultsPanel } from "./components/SearchResultsPanel";
 
 export default function Home() {
+
   return (
     <div className="flex flex-col min-h-screen w-full bg-gray-100 items-center">
       <NavBar />

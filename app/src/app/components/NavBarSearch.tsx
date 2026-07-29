@@ -31,6 +31,27 @@ export function NavBarSearch() {
             className="w-full pl-12 pr-4 h-full rounded-xs border border-gray-200 bg-gray-100 focus:border-gray-300 focus:outline-none text-sm bg-[var(--background)]"
             placeholder="Search flights, hotels, activities"
           />
+          <div className="absolute top-full left-0 z-50 space-y-2">
+            {Object.entries(groupedResults).map(([type, list]) =>
+              list.length > 0 ? (
+                <div key={type} className="border rounded-lg p-4 bg-white opacity-100">
+                  <h2 className="font-bold text-lg capitalize mb-2">{type}</h2>
+                  <ul className="space-y-1">
+                    {list.map((item: { name?: any; title?: any; }, i: React.Key | null | undefined) => (
+                      <li key={i} className="text-sm" onClick={() => {
+                        const typedKey = type as ResultKey;
+                        setSelectedType(typedKey);
+                        setSelectedLocation(item);
+                        setSecondOpen(true);
+                      }}>
+                        {item.name ?? item.title}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null
+            )}
+          </div>
         </div>
         <select
           aria-label="Search category"
@@ -59,6 +80,12 @@ export function NavBarSearch() {
       >
         <Image src="/MagnifyingGlass.svg" alt="Search" width={18} height={18} />
       </button>
+      <ListingsModal
+        isOpen={secondOpen}
+        onClose={() => setSecondOpen(false)}
+        searchType={selectedType!}
+        location={selectedLocation}
+      />
     </div>
   );
 }

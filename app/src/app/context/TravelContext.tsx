@@ -1,4 +1,5 @@
 "use client";
+import { createContext, useContext, useReducer, ReactNode } from "react";
 
 import React, {
   createContext,
@@ -189,6 +190,8 @@ export function TravelProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+export const TravelProvider = ({ children }: { children: ReactNode }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <TravelContext.Provider
       value={{
@@ -210,12 +213,6 @@ export function TravelProvider({ children }: { children: React.ReactNode }) {
       {children}
     </TravelContext.Provider>
   );
-}
+};
 
-export function useTravel() {
-  const ctx = useContext(TravelContext);
-  if (!ctx) throw new Error("useTravel must be used within TravelProvider");
-  return ctx;
-}
-
-export default TravelContext;
+export const useTravel = () => useContext(TravelContext);
