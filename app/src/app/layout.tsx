@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Trafiesta",
-  description: "Travel App",
+  title: "Trafiesta — Travel itinerary demo",
+  description:
+    "Demo travel itinerary app that searches flights, hotels, and activities via RapidAPI.",
 };
 
 export default function RootLayout({

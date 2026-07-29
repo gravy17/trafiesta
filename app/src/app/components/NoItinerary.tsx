@@ -1,24 +1,23 @@
-import Image from "next/image";
-import React, { useState } from "react";
-import ItineraryModal from "./ItineraryModal";
-import ListingsModal from "./ListingsModal";
+"use client";
 
-type AllowedTypes = 'flight' | 'hotel' | 'activity' 
+import React from "react";
+import { useTravel, type SearchCategory } from "../context/TravelContext";
+
+type AllowedTypes = "flight" | "hotel" | "activity";
 
 type NoItineraryProps = {
   type: AllowedTypes;
 };
 
-export function NoItinerary({
-  type
-}: NoItineraryProps
-) {
-  const [firstOpen, setFirstOpen] = useState(false);
-  const [secondOpen, setSecondOpen] = useState(false);
-  const [selectedType, setSelectedType] = useState<
-    "hotels" | "flights" | "attraction" | null
-  >(null);
-  const [selectedLocation, setSelectedLocation] = useState<any>(null);
+const typeToCategory: Record<AllowedTypes, SearchCategory> = {
+  flight: "flights",
+  hotel: "hotels",
+  activity: "activities",
+};
+
+export function NoItinerary({ type }: NoItineraryProps) {
+  const { runSearch, search } = useTravel();
+  const category = typeToCategory[type];
 
   return (
     <section className={`w-full h-fit rounded-xs p-4 text-sm bg-white flex flex-col align-middle justify-items-center-safe`}>
@@ -75,22 +74,12 @@ export function NoItinerary({
  : null}
         <p className={`text-sm text-dark align-middle`}>No Request Yet</p>
       </div>
-      <button onClick={() => {
-          switch (type){
-            case "hotel":
-              setSelectedType("hotels")
-              break;
-            case "flight":
-              setSelectedType("flights")
-              break;
-            case "activity":
-              setSelectedType("attraction")
-              break;
-            default:
-              setSelectedType(null)
-          }
-          setFirstOpen(true);
-        }} className={`w-full max-w-44 max-h-12 p-2 rounded-sm font-medium mt-4 text-white bg-blue-700 mx-auto`}>
+      <button
+        type="button"
+        disabled={search.loading && search.category === category}
+        onClick={() => void runSearch(category, search.query || "Bahamas")}
+        className={`w-full max-w-44 max-h-12 p-2 rounded-sm font-medium mt-4 text-white bg-blue-700 mx-auto disabled:opacity-60`}
+      >
         Add {type}
       </button>
 
