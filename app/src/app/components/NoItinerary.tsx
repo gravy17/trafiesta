@@ -1,16 +1,24 @@
-import Image from "next/image";
-import React from "react";
+"use client";
 
-type AllowedTypes = 'flight' | 'hotel' | 'activity' 
+import React from "react";
+import { useTravel, type SearchCategory } from "../context/TravelContext";
+
+type AllowedTypes = "flight" | "hotel" | "activity";
 
 type NoItineraryProps = {
   type: AllowedTypes;
 };
 
-export function NoItinerary({
-  type
-}: NoItineraryProps
-) {
+const typeToCategory: Record<AllowedTypes, SearchCategory> = {
+  flight: "flights",
+  hotel: "hotels",
+  activity: "activities",
+};
+
+export function NoItinerary({ type }: NoItineraryProps) {
+  const { runSearch, search } = useTravel();
+  const category = typeToCategory[type];
+
   return (
     <section className={`w-full h-fit rounded-xs p-4 text-sm bg-white flex flex-col align-middle justify-items-center-safe`}>
       <div className="w-fit m-auto">
@@ -66,7 +74,12 @@ export function NoItinerary({
  : null}
         <p className={`text-sm text-dark align-middle`}>No Request Yet</p>
       </div>
-      <button className={`w-full max-w-44 max-h-12 p-2 rounded-sm font-medium mt-4 text-white bg-blue-700 mx-auto`}>
+      <button
+        type="button"
+        disabled={search.loading && search.category === category}
+        onClick={() => void runSearch(category, search.query || "Bahamas")}
+        className={`w-full max-w-44 max-h-12 p-2 rounded-sm font-medium mt-4 text-white bg-blue-700 mx-auto disabled:opacity-60`}
+      >
         Add {type}
       </button>
     </section>
