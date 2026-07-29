@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Trafiesta (Next.js app)
 
-## Getting Started
+Travel itinerary demo that shows **API integration** against RapidAPI booking-style endpoints, with a secure server-side BFF and mock fixtures when no API key is configured.
 
-First, run the development server:
+## Features demonstrated
+
+- Server-only RapidAPI client (`X-RapidAPI-Key` / `X-RapidAPI-Host`, timeout, 401/429/5xx handling)
+- Next.js App Router BFF routes: `GET /api/flights`, `GET /api/hotels`, `GET /api/activities`
+- Typed response mapping (Zod) into itinerary models
+- Search UI with loading, error + retry, and mock/live source badge
+- Add / remove items on the in-memory itinerary
+
+## Setup
 
 ```bash
+cd app
+cp .env.example .env.local
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Required | Description |
+|---|---|---|
+| `RAPIDAPI_KEY` | No (mocks used if empty) | RapidAPI key |
+| `RAPIDAPI_HOST` | No | Defaults to `booking-com15.p.rapidapi.com` |
+| `RAPIDAPI_FLIGHTS_PATH` | No | Override flights search path |
+| `RAPIDAPI_HOTELS_PATH` | No | Override hotels search path |
+| `RAPIDAPI_ACTIVITIES_PATH` | No | Override activities search path |
 
-## Learn More
+Without `RAPIDAPI_KEY`, the BFF still returns fixture data with `source: "mock"` and a warning so the full UI flow works for reviewers.
 
-To learn more about Next.js, take a look at the following resources:
+## API routes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```http
+GET /api/flights?q=Bahamas
+GET /api/hotels?q=Bahamas
+GET /api/activities?q=Bahamas
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Example success body:
 
-## Deploy on Vercel
+```json
+{
+  "source": "mock",
+  "query": "Bahamas",
+  "results": [{ "id": "mock-flight-1", "route": "JFK → Bahamas", "time": "08:15 – 12:40", "price": "$289" }],
+  "warning": "RAPIDAPI_KEY not set — serving demo fixtures"
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project layout
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/lib/rapidapi.ts` — server RapidAPI helper + search + mock fallback
+- `src/lib/mocks.ts` — demo fixtures
+- `src/lib/api-client.ts` — browser fetch helpers for the BFF
+- `src/app/api/*/route.ts` — BFF route handlers
+- `src/app/context/TravelContext.tsx` — itinerary + search state
